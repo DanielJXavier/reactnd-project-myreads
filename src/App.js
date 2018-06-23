@@ -1,6 +1,7 @@
 // import * as BooksAPI from './BooksAPI'
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import SearchBooks from './SearchBooks'
 import './App.css'
 
 class BooksApp extends Component {
@@ -11,17 +12,7 @@ class BooksApp extends Component {
     return (
       <div className="app">
         <Route path="/search" render={() => (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <Link className="close-search" to="/">Close</Link>
-              <div className="search-books-input-wrapper">
-                <input type="text" placeholder="Search by title or author"/>
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
+          <SearchBooks/>
         )}/>
         <Route exact path="/" render={() => (
           <div className="list-books">
