@@ -9,7 +9,7 @@ class ListBooks extends Component {
   }
 
   render() {
-    const { books } = this.props
+    const { books, onUpdate } = this.props
 
     return (
       <div className="list-books">
@@ -23,7 +23,7 @@ class ListBooks extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {books.filter((book) => book.shelf === 'currentlyReading').map((book) => (
-                    <Book key={book.id} book={book}/>
+                    <Book key={book.id} book={book} onUpdate={onUpdate}/>
                   ))}
                 </ol>
               </div>
@@ -33,7 +33,7 @@ class ListBooks extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {books.filter((book) => book.shelf === 'wantToRead').map((book) => (
-                    <Book key={book.id} book={book}/>
+                    <Book key={book.id} book={book} onUpdate={onUpdate}/>
                   ))}
                 </ol>
               </div>
@@ -43,7 +43,7 @@ class ListBooks extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {books.filter((book) => book.shelf === 'read').map((book) => (
-                    <Book key={book.id} book={book}/>
+                    <Book key={book.id} book={book} onUpdate={onUpdate}/>
                   ))}
                 </ol>
               </div>

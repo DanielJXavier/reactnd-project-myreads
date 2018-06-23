@@ -10,6 +10,19 @@ class BooksApp extends Component {
     books: []
   }
 
+  updateBook(book, shelf) {
+    this.setState((state) => ({
+      books: state.books.map((b) => {
+        if (b.id === book.id) {
+          book.shelf = shelf
+        }
+        return b
+      })
+    }))
+
+    BooksAPI.update(book, shelf)
+  }
+
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
@@ -23,7 +36,7 @@ class BooksApp extends Component {
           <SearchBooks/>
         )}/>
         <Route exact path="/" render={() => (
-          <ListBooks books={this.state.books}/>
+          <ListBooks books={this.state.books} onUpdate={this.updateBook.bind(this)}/>
         )}/>
       </div>
     )
